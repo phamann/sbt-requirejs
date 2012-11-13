@@ -22,7 +22,7 @@ object RequireJS extends Plugin {
     }
   )
 
-  def requireJsCompiler = (requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir, requireJs
+  def requireJsCompiler = (requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir, requireJsWrap
     ) map {
     (optimize, appDir, dir, baseUrl, paths, modules, s, cacheDir, wrap) =>
       implicit val log = s.log
