@@ -10,7 +10,7 @@ object RequireJS extends Plugin {
   val requireJsDir = SettingKey[File]("require-js-dir", "The location you want the javascript optimized to")
   val requireJsBaseUrl = SettingKey[String]("require-js-base-url", "The base url of requireJs modules")
   val requireJsOptimize = SettingKey[Boolean]("require-js-optimize", "Let requireJs know whether to optimize files or not")
-
+  val requireJsWrap = SettingKey[Map[String]]("require-js-wrap", "Paths to files to include at begining and end of built file")
   val requireJsModules = SettingKey[Seq[String]]("require-js-modules", "The requireJs entry modules (usually main - for main.js)")
   val requireJsPaths = SettingKey[Map[String, String]]("require-js-paths", "The requireJS paths mapping (Eg, 'bonzo' -> 'vendor/bonzo-v1.0.1'")
 
@@ -22,8 +22,9 @@ object RequireJS extends Plugin {
     }
   )
 
-  def requireJsCompiler = (requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir) map {
-    (optimize, appDir, dir, baseUrl, paths, modules, s, cacheDir) =>
+  def requireJsCompiler = (requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir, requireJs
+    ) map {
+    (optimize, appDir, dir, baseUrl, paths, modules, s, cacheDir, wrap) =>
       implicit val log = s.log
 
       //we cannot write directly to resources dir as the optimizer deletes everything in there
@@ -45,7 +46,7 @@ object RequireJS extends Plugin {
 
 
       val config = RequireJsConfig(baseUrl, appDir.getAbsolutePath,
-        tmpDir.getAbsolutePath, paths, modules.map(Module(_)), optimizeOpt)
+        tmpDir.getAbsolutePath, paths, modules.map(Module(_)), optimizeOpt, wrap.map(WrapFile(_)))
 
       if (canSkipCompile(sourceFileDetails, cacheFileDetails)) {
         log.info("Skipping javascript file optimization")

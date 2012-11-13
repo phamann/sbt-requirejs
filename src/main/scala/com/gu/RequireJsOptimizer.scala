@@ -7,12 +7,14 @@ import com.codahale.jerkson.Json._
 import java.util
 
 case class Module(name: String)
+case class WrapFile(startFile: String)
 
 case class RequireJsConfig(baseUrl: String,
                            appDir: String,
                            dir: String,
                            paths: Map[String, String],
                            modules: Seq[Module],
+                           wrap: Seq[WrapFile],
                            // to turn off optimization use optimize=Some("none")    - yeah, I know
                            optimize: Option[String])
 
