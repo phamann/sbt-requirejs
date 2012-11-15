@@ -14,7 +14,7 @@ case class RequireJsConfig(baseUrl: String,
                            paths: Map[String, String],
                            modules: Seq[Module],
                            // to turn off optimization use optimize=Some("none")    - yeah, I know
-                           optimize: Option[String],
+                           optimize: String,
                            wrap: Map[String, String])
 
 object RequireJsOptimizer {

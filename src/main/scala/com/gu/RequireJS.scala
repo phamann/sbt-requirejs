@@ -9,7 +9,7 @@ object RequireJS extends Plugin {
   val requireJsAppDir = SettingKey[File]("require-js-app-dir", "The location of the javascript you want to optimize")
   val requireJsDir = SettingKey[File]("require-js-dir", "The location you want the javascript optimized to")
   val requireJsBaseUrl = SettingKey[String]("require-js-base-url", "The base url of requireJs modules")
-  val requireJsOptimize = SettingKey[Boolean]("require-js-optimize", "Let requireJs know whether to optimize files or not")
+  val requireJsOptimize = SettingKey[String]("require-js-optimize", "Let requireJs know whether to optimize files or not")
   val requireJsWrap = SettingKey[Map[String, String]]("require-js-wrap", "Paths to files to include at begining and end of built file")
   val requireJsModules = SettingKey[Seq[String]]("require-js-modules", "The requireJs entry modules (usually main - for main.js)")
   val requireJsPaths = SettingKey[Map[String, String]]("require-js-paths", "The requireJS paths mapping (Eg, 'bonzo' -> 'vendor/bonzo-v1.0.1'")
