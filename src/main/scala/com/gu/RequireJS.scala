@@ -33,7 +33,7 @@ object RequireJS extends Plugin {
 
       tmpDir.deleteOnExit()
 
-      val optimizeOpt = if (optimize) None else Some("none")
+      //val optimizeOpt = if (optimize) None else Some("none")
 
       if (!cacheDir.exists) {
         cacheDir.mkdirs
