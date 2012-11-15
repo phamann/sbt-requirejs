@@ -46,7 +46,7 @@ object RequireJS extends Plugin {
 
 
       val config = RequireJsConfig(baseUrl, appDir.getAbsolutePath,
-        tmpDir.getAbsolutePath, paths, modules.map(Module(_)), optimizeOpt, wrap)
+        tmpDir.getAbsolutePath, paths, modules.map(Module(_)), optimize, wrap)
 
       if (canSkipCompile(sourceFileDetails, cacheFileDetails)) {
         log.info("Skipping javascript file optimization")
