@@ -23,9 +23,9 @@ object RequireJS extends Plugin {
     }
   )
 
-  def requireJsCompiler = (requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir, requireJsWrap, requireJsUglify
+  def requireJsCompiler = (requireJsUglify, requireJsOptimize, requireJsAppDir, requireJsDir, requireJsBaseUrl, requireJsPaths, requireJsModules, streams, requireJsCacheDir, requireJsWrap
     ) map {
-    (optimize, appDir, dir, baseUrl, paths, modules, s, cacheDir, wrap, uglify) =>
+    (uglify, optimize, appDir, dir, baseUrl, paths, modules, s, cacheDir, wrap) =>
       implicit val log = s.log
 
       //we cannot write directly to resources dir as the optimizer deletes everything in there
